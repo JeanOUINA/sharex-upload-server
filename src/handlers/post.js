@@ -5,12 +5,9 @@ const { createWriteStream } = require('fs');
 
 module.exports = async (req, res) => {
   if (req.headers['authorization'] !== config.key) {
-    res.writeHead(401, {
-      'Content-Type': 'application/json'
-    });
-    return res.end(JSON.stringify({
+    return res.status(401).send({
       message: 'Authorization header incorrect'
-    }));
+    })
   }
   
   const file = createFile(
@@ -22,9 +19,6 @@ module.exports = async (req, res) => {
   );
   
   req.on('end', () => {
-    res.writeHead(200, {
-      'Content-Type': 'application/json'
-    });
-    res.end(JSON.stringify(file));
+    res.status(200).send(file)
   });
 }

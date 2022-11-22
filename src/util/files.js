@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const exts = require("./exts.json")
 
 const files = new Map();
 const filesDir = path.resolve(__dirname, '..', '..', 'files');
@@ -13,7 +14,8 @@ for (const file of fs.readdirSync(filesDir)) {
     continue;
   }
 
-  const [ filename, ...extensions ] = file.split('.');
+  const [ id, ...extensions ] = file.split('.');
+  const filename = exts[extensions[extensions.length]] ? id : file
   files.set(filename, {
     filename,
     ext: `.${extensions.join('.')}`,

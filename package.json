@@ -1,7 +1,7 @@
 {
   "name": "sharex-upload-server",
   "version": "1.0.0",
-  "description": "A lightweight, dependency-less ShareX upload server in Node.js",
+  "description": "A lightweight ShareX upload server in Node.js",
   "main": "index.js",
   "scripts": {
     "generate-key": "node -e \"const key = require('crypto').randomBytes(32).toString('hex'); require('fs').writeFileSync('./config.json', JSON.stringify({ ...require('./config.json'), key }, '', '  ')); console.log('Here\\'s your key:', key);\""
@@ -10,11 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/aetheryx/sharex-upload-server.git"
   },
-  "keywords": [ "file-server", "sharex" ],
+  "keywords": [
+    "file-server",
+    "sharex"
+  ],
   "author": "aetheryx",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/aetheryx/sharex-upload-server/issues"
   },
-  "homepage": "https://github.com/aetheryx/sharex-upload-server#readme"
+  "homepage": "https://github.com/aetheryx/sharex-upload-server#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
